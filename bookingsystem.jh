@@ -1,0 +1,196 @@
+enum GenderType{
+MALE FEMALE
+}
+
+enum RoomState{
+OCCUPIED CLEANING VACANT BOOKED CLEANED
+}
+enum RoomType{
+AC NONAC
+}
+
+enum MStatus{
+SINGLE MARRIED
+}
+
+enum BookingType{
+	ONLINE OFFLINE
+}
+
+enum Status{
+	ACTIVE INACTIVE
+}
+
+
+enum FeedbackStatus{
+GOOD BAD AVERAGE TOBEIMPROVED EXCELLENT
+}
+
+@paginate(pagination)
+@service(serviceImpl)
+entity CustomerInfo{
+  name String
+  photo String
+  age Integer
+  phno Long
+  email String
+  gender GenderType
+  status MStatus
+  addressproof String
+  createdDate Instant
+  updatedDate Instant
+  createdBy Long
+  updatedBy Long
+}
+
+
+@paginate(pagination)
+@service(serviceImpl)
+entity EmployeeInfo{
+  name String
+  age Integer
+  gender GenderType
+  addressproof String
+  photo String
+  doj Instant
+  education String
+  referredby String
+  status Status
+  createdDate Instant
+  updatedDate Instant
+  createdBy Long
+  updatedBy Long
+}
+@paginate(pagination)
+@service(serviceImpl)
+entity Room {
+  rooomno Integer
+  roomType RoomType
+  rstatus RoomState
+  cost Integer
+  status Status
+  createdDate Instant
+  updatedDate Instant
+  createdBy Long
+  updatedBy Long
+  
+}
+
+
+@paginate(pagination)
+@service(serviceImpl)
+entity Booking{
+  bookingType BookingType
+  noofPeople Integer
+  comingFrom String
+  visitPurpose String
+  roomCategory RoomType
+  totalAmount Integer
+  advance Integer
+  balanceAmount Integer
+  gst Float
+  bookingFrom Instant
+  bookingTo Instant
+  createdDate Instant
+  updatedDate Instant
+  createdBy Long
+  updatedBy Long
+}
+
+
+
+
+@paginate(pagination)
+@service(serviceImpl)
+entity Address{
+    name String
+    dno String
+    locality String
+    streetName String
+    district String
+    city String
+    pincode Integer
+    createdDate Instant
+    updatedDate Instant
+    createdBy Long
+    updatedBy Long
+}
+
+
+@paginate(pagination)
+@service(serviceImpl)
+entity Finance{
+  credited Integer
+  debited Integer
+  purpose String
+  createdDate Instant
+  updatedDate Instant
+  createdBy Long
+  updatedBy Long
+}
+
+@paginate(pagination)
+@service(serviceImpl)
+entity Inventory{
+  purchaseDate Integer
+  itemdescription String
+  quantity Integer
+  available Integer
+  itemcat String
+  purchaseAmount Integer
+  purpose String
+  createdDate Instant
+  updatedDate Instant
+  createdBy Long
+  updatedBy Long
+}
+
+
+
+
+@paginate(pagination)
+@service(serviceImpl)
+entity FeedBack{
+  comments String
+  feedbackStatus FeedbackStatus
+}
+
+@paginate(pagination)
+@service(serviceImpl)
+entity FileMeta{
+  name String
+  type String
+  size Integer
+  path String
+  createdDate Instant
+  updatedDate Instant
+  createdBy Long
+  updatedBy Long
+  
+}
+
+
+
+relationship ManyToOne {
+CustomerInfo{user} to User
+EmployeeInfo{user} to User
+Booking{user} to User
+Room{booking} to Booking
+Booking{customer} to CustomerInfo
+Booking{employee} to EmployeeInfo
+Inventory{user} to User
+Finance{booking} to Booking
+Room{user} to User
+Finance{user} to User
+FileMeta{booking} to Booking
+FileMeta{customer} to CustomerInfo
+FileMeta{employee} to EmployeeInfo
+FileMeta{user} to User
+ }
+
+
+relationship OneToOne{
+Address{customer} to CustomerInfo
+Address{employee} to EmployeeInfo
+
+}

@@ -1,0 +1,9 @@
+{
+  "bookingApp": {
+    "MStatus": {
+      "null": "",
+      "SINGLE": "SINGLE",
+      "MARRIED": "MARRIED"
+    }
+  }
+}

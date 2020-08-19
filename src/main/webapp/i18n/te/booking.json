@@ -1,0 +1,39 @@
+{
+  "bookingApp": {
+    "booking": {
+      "home": {
+        "title": "Bookings",
+        "createLabel": "కొత్త Booking  సృష్టించండి",
+        "createOrEditLabel": "Booking సృష్టించండి లేదా సవరించండి",
+        "notFound": "No Bookings found"
+      },
+      "created": "{{ param }} ఐడీ తో ఒక కొత్త Booking సృష్టించబడినది",
+      "updated": "{{ param }} ఐడీ తో ఒక కొత్త Booking సవరించబడినది",
+      "deleted": "{{ param }} ఐడీ తో ఒక కొత్త Booking తొలగించబడినది",
+      "delete": {
+        "question": "మీరు Booking {{ id }} ఖచ్చితంగా తొలగించాలనుకుంటున్నారా?"
+      },
+      "detail": {
+        "title": "Booking"
+      },
+      "bookingType": "Booking Type",
+      "noofPeople": "Noof People",
+      "comingFrom": "Coming From",
+      "visitPurpose": "Visit Purpose",
+      "roomCategory": "Room Category",
+      "totalAmount": "Total Amount",
+      "advance": "Advance",
+      "balanceAmount": "Balance Amount",
+      "gst": "Gst",
+      "bookingFrom": "Booking From",
+      "bookingTo": "Booking To",
+      "createdDate": "Created Date",
+      "updatedDate": "Updated Date",
+      "createdBy": "Created By",
+      "updatedBy": "Updated By",
+      "user": "User",
+      "customer": "Customer",
+      "employee": "Employee"
+    }
+  }
+}

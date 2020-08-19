@@ -1,0 +1,99 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="bookingApp.employeeInfo.home.title">Employee Infos</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-employee-info" [routerLink]="['/employee-info/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="bookingApp.employeeInfo.home.createLabel">
+            Create a new Employee Info
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="employeeInfos?.length === 0">
+        <span jhiTranslate="bookingApp.employeeInfo.home.notFound">No employeeInfos found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="employeeInfos && employeeInfos.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="name"><span jhiTranslate="bookingApp.employeeInfo.name">Name</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="age"><span jhiTranslate="bookingApp.employeeInfo.age">Age</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="gender"><span jhiTranslate="bookingApp.employeeInfo.gender">Gender</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="addressproof"><span jhiTranslate="bookingApp.employeeInfo.addressproof">Addressproof</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="photo"><span jhiTranslate="bookingApp.employeeInfo.photo">Photo</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="doj"><span jhiTranslate="bookingApp.employeeInfo.doj">Doj</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="education"><span jhiTranslate="bookingApp.employeeInfo.education">Education</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="referredby"><span jhiTranslate="bookingApp.employeeInfo.referredby">Referredby</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="status"><span jhiTranslate="bookingApp.employeeInfo.status">Status</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="createdDate"><span jhiTranslate="bookingApp.employeeInfo.createdDate">Created Date</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="updatedDate"><span jhiTranslate="bookingApp.employeeInfo.updatedDate">Updated Date</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="createdBy"><span jhiTranslate="bookingApp.employeeInfo.createdBy">Created By</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="updatedBy"><span jhiTranslate="bookingApp.employeeInfo.updatedBy">Updated By</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="user.id"><span jhiTranslate="bookingApp.employeeInfo.user">User</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let employeeInfo of employeeInfos ;trackBy: trackId">
+                    <td><a [routerLink]="['/employee-info', employeeInfo.id, 'view']">{{ employeeInfo.id }}</a></td>
+                    <td>{{ employeeInfo.name }}</td>
+                    <td>{{ employeeInfo.age }}</td>
+                    <td jhiTranslate="{{ 'bookingApp.GenderType.' + employeeInfo.gender }}">{{ employeeInfo.gender }}</td>
+                    <td>{{ employeeInfo.addressproof }}</td>
+                    <td>{{ employeeInfo.photo }}</td>
+                    <td>{{ employeeInfo.doj | date:'medium' }}</td>
+                    <td>{{ employeeInfo.education }}</td>
+                    <td>{{ employeeInfo.referredby }}</td>
+                    <td jhiTranslate="{{ 'bookingApp.Status.' + employeeInfo.status }}">{{ employeeInfo.status }}</td>
+                    <td>{{ employeeInfo.createdDate | date:'medium' }}</td>
+                    <td>{{ employeeInfo.updatedDate | date:'medium' }}</td>
+                    <td>{{ employeeInfo.createdBy }}</td>
+                    <td>{{ employeeInfo.updatedBy }}</td>
+                    <td>
+                        {{ employeeInfo.user?.id }}
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/employee-info', employeeInfo.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/employee-info', employeeInfo.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(employeeInfo)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="employeeInfos && employeeInfos.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,82 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="address">
+            <h2><span jhiTranslate="bookingApp.address.detail.title">Address</span> {{ address.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="bookingApp.address.name">Name</span></dt>
+                <dd>
+                    <span>{{ address.name }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.address.dno">Dno</span></dt>
+                <dd>
+                    <span>{{ address.dno }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.address.locality">Locality</span></dt>
+                <dd>
+                    <span>{{ address.locality }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.address.streetName">Street Name</span></dt>
+                <dd>
+                    <span>{{ address.streetName }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.address.district">District</span></dt>
+                <dd>
+                    <span>{{ address.district }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.address.city">City</span></dt>
+                <dd>
+                    <span>{{ address.city }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.address.pincode">Pincode</span></dt>
+                <dd>
+                    <span>{{ address.pincode }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.address.createdDate">Created Date</span></dt>
+                <dd>
+                    <span>{{ address.createdDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.address.updatedDate">Updated Date</span></dt>
+                <dd>
+                    <span>{{ address.updatedDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.address.createdBy">Created By</span></dt>
+                <dd>
+                    <span>{{ address.createdBy }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.address.updatedBy">Updated By</span></dt>
+                <dd>
+                    <span>{{ address.updatedBy }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.address.customer">Customer</span></dt>
+                <dd>
+                    <div *ngIf="address.customer">
+                        <a [routerLink]="['/customer-info', address.customer?.id, 'view']">{{ address.customer?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.address.employee">Employee</span></dt>
+                <dd>
+                    <div *ngIf="address.employee">
+                        <a [routerLink]="['/employee-info', address.employee?.id, 'view']">{{ address.employee?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/address', address.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

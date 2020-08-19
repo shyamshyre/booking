@@ -1,0 +1,35 @@
+{
+  "bookingApp": {
+    "employeeInfo": {
+      "home": {
+        "title": "Employee Infos",
+        "createLabel": "కొత్త Employee Info  సృష్టించండి",
+        "createOrEditLabel": "Employee Info సృష్టించండి లేదా సవరించండి",
+        "notFound": "No Employee Infos found"
+      },
+      "created": "{{ param }} ఐడీ తో ఒక కొత్త Employee Info సృష్టించబడినది",
+      "updated": "{{ param }} ఐడీ తో ఒక కొత్త Employee Info సవరించబడినది",
+      "deleted": "{{ param }} ఐడీ తో ఒక కొత్త Employee Info తొలగించబడినది",
+      "delete": {
+        "question": "మీరు Employee Info {{ id }} ఖచ్చితంగా తొలగించాలనుకుంటున్నారా?"
+      },
+      "detail": {
+        "title": "Employee Info"
+      },
+      "name": "Name",
+      "age": "Age",
+      "gender": "Gender",
+      "addressproof": "Addressproof",
+      "photo": "Photo",
+      "doj": "Doj",
+      "education": "Education",
+      "referredby": "Referredby",
+      "status": "Status",
+      "createdDate": "Created Date",
+      "updatedDate": "Updated Date",
+      "createdBy": "Created By",
+      "updatedBy": "Updated By",
+      "user": "User"
+    }
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "name": "Booking",
+  "fields": [
+    {
+      "fieldName": "bookingType",
+      "fieldType": "BookingType",
+      "fieldValues": "ONLINE,OFFLINE"
+    },
+    {
+      "fieldName": "noofPeople",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "comingFrom",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "visitPurpose",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "roomCategory",
+      "fieldType": "RoomType",
+      "fieldValues": "AC,NONAC"
+    },
+    {
+      "fieldName": "totalAmount",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "advance",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "balanceAmount",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "gst",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "bookingFrom",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "bookingTo",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "updatedDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "updatedBy",
+      "fieldType": "Long"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "booking",
+      "relationshipName": "user",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "customerInfo",
+      "otherEntityRelationshipName": "booking",
+      "relationshipName": "customer",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "employeeInfo",
+      "otherEntityRelationshipName": "booking",
+      "relationshipName": "employee",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200819010751",
+  "entityTableName": "booking",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

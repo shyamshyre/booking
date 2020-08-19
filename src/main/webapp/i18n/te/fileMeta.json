@@ -1,0 +1,33 @@
+{
+  "bookingApp": {
+    "fileMeta": {
+      "home": {
+        "title": "File Metas",
+        "createLabel": "కొత్త File Meta  సృష్టించండి",
+        "createOrEditLabel": "File Meta సృష్టించండి లేదా సవరించండి",
+        "notFound": "No File Metas found"
+      },
+      "created": "{{ param }} ఐడీ తో ఒక కొత్త File Meta సృష్టించబడినది",
+      "updated": "{{ param }} ఐడీ తో ఒక కొత్త File Meta సవరించబడినది",
+      "deleted": "{{ param }} ఐడీ తో ఒక కొత్త File Meta తొలగించబడినది",
+      "delete": {
+        "question": "మీరు File Meta {{ id }} ఖచ్చితంగా తొలగించాలనుకుంటున్నారా?"
+      },
+      "detail": {
+        "title": "File Meta"
+      },
+      "name": "Name",
+      "type": "Type",
+      "size": "Size",
+      "path": "Path",
+      "createdDate": "Created Date",
+      "updatedDate": "Updated Date",
+      "createdBy": "Created By",
+      "updatedBy": "Updated By",
+      "booking": "Booking",
+      "customer": "Customer",
+      "employee": "Employee",
+      "user": "User"
+    }
+  }
+}

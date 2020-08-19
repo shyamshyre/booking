@@ -22,7 +22,7 @@ management:
         include: ['configprops', 'env', 'health', 'info', 'jhimetrics', 'logfile', 'loggers', 'prometheus', 'threaddump']
   endpoint:
     health:
-      show-details: when_authorized
+      show-details: WHEN_AUTHORIZED
       roles: 'ROLE_ADMIN'
     jhimetrics:
       enabled: true
@@ -59,7 +59,14 @@ management:
 
 spring:
   application:
-    name: booking
+    name: bookingsystem
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 2KB
+      max-file-size: 200MB
+      max-request-size: 215MB
+
   profiles:
     # The commented value for `active` can be replaced with valid Spring profiles to load.
     # Otherwise, it will be filled in by maven when building the JAR file
@@ -97,13 +104,13 @@ spring:
     allow-bean-definition-overriding: true
   task:
     execution:
-      thread-name-prefix: booking-task-
+      thread-name-prefix: bookingsystem-task-
       pool:
         core-size: 2
         max-size: 50
         queue-capacity: 10000
     scheduling:
-      thread-name-prefix: booking-scheduling-
+      thread-name-prefix: bookingsystem-scheduling-
       pool:
         size: 2
   thymeleaf:
@@ -131,7 +138,7 @@ info:
 
 jhipster:
   clientApp:
-    name: 'bookingApp'
+    name: 'bookingsystemApp'
   # By default CORS is disabled. Uncomment to enable.
   # cors:
   #     allowed-origins: "*"
@@ -141,11 +148,11 @@ jhipster:
   #     allow-credentials: true
   #     max-age: 1800
   mail:
-    from: booking@localhost
+    from: bookingsystem@localhost
   swagger:
     default-include-pattern: /api/.*
-    title: booking API
-    description: booking API documentation
+    title: bookingsystem API
+    description: bookingsystem API documentation
     version: 0.0.1
     terms-of-service-url:
     contact-name:
@@ -162,4 +169,5 @@ jhipster:
 # https://www.jhipster.tech/common-application-properties/
 # ===================================================================
 
-# application:
+application:
+  fileuploadpath: /Users/shyam/Documents/java

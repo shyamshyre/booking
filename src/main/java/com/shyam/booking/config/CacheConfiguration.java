@@ -48,6 +48,15 @@ public class CacheConfiguration {
             createCache(cm, com.shyam.booking.domain.User.class.getName());
             createCache(cm, com.shyam.booking.domain.Authority.class.getName());
             createCache(cm, com.shyam.booking.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.shyam.booking.domain.CustomerInfo.class.getName());
+            createCache(cm, com.shyam.booking.domain.EmployeeInfo.class.getName());
+            createCache(cm, com.shyam.booking.domain.Room.class.getName());
+            createCache(cm, com.shyam.booking.domain.Booking.class.getName());
+            createCache(cm, com.shyam.booking.domain.Address.class.getName());
+            createCache(cm, com.shyam.booking.domain.Finance.class.getName());
+            createCache(cm, com.shyam.booking.domain.Inventory.class.getName());
+            createCache(cm, com.shyam.booking.domain.FeedBack.class.getName());
+            createCache(cm, com.shyam.booking.domain.FileMeta.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

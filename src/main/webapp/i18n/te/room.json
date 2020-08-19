@@ -1,0 +1,32 @@
+{
+  "bookingApp": {
+    "room": {
+      "home": {
+        "title": "Rooms",
+        "createLabel": "కొత్త Room  సృష్టించండి",
+        "createOrEditLabel": "Room సృష్టించండి లేదా సవరించండి",
+        "notFound": "No Rooms found"
+      },
+      "created": "{{ param }} ఐడీ తో ఒక కొత్త Room సృష్టించబడినది",
+      "updated": "{{ param }} ఐడీ తో ఒక కొత్త Room సవరించబడినది",
+      "deleted": "{{ param }} ఐడీ తో ఒక కొత్త Room తొలగించబడినది",
+      "delete": {
+        "question": "మీరు Room {{ id }} ఖచ్చితంగా తొలగించాలనుకుంటున్నారా?"
+      },
+      "detail": {
+        "title": "Room"
+      },
+      "rooomno": "Rooomno",
+      "roomType": "Room Type",
+      "rstatus": "Rstatus",
+      "cost": "Cost",
+      "status": "Status",
+      "createdDate": "Created Date",
+      "updatedDate": "Updated Date",
+      "createdBy": "Created By",
+      "updatedBy": "Updated By",
+      "booking": "Booking",
+      "user": "User"
+    }
+  }
+}

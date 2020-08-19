@@ -1,0 +1,12 @@
+{
+  "bookingApp": {
+    "FeedbackStatus": {
+      "null": "",
+      "GOOD": "GOOD",
+      "BAD": "BAD",
+      "AVERAGE": "AVERAGE",
+      "TOBEIMPROVED": "TOBEIMPROVED",
+      "EXCELLENT": "EXCELLENT"
+    }
+  }
+}

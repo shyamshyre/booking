@@ -1,0 +1,9 @@
+{
+  "bookingApp": {
+    "RoomType": {
+      "null": "",
+      "AC": "AC",
+      "NONAC": "NONAC"
+    }
+  }
+}

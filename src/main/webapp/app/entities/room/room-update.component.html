@@ -1,0 +1,107 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-room-heading" jhiTranslate="bookingApp.room.home.createOrEditLabel">Create or edit a Room</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bookingApp.room.rooomno" for="field_rooomno">Rooomno</label>
+                    <input type="number" class="form-control" name="rooomno" id="field_rooomno"
+                           formControlName="rooomno"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bookingApp.room.roomType" for="field_roomType">Room Type</label>
+                    <select class="form-control" name="roomType" formControlName="roomType" id="field_roomType">
+                        <option value="AC">{{ 'bookingApp.RoomType.AC' | translate }}</option>
+                        <option value="NONAC">{{ 'bookingApp.RoomType.NONAC' | translate }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bookingApp.room.rstatus" for="field_rstatus">Rstatus</label>
+                    <select class="form-control" name="rstatus" formControlName="rstatus" id="field_rstatus">
+                        <option value="OCCUPIED">{{ 'bookingApp.RoomState.OCCUPIED' | translate }}</option>
+                        <option value="CLEANING">{{ 'bookingApp.RoomState.CLEANING' | translate }}</option>
+                        <option value="VACANT">{{ 'bookingApp.RoomState.VACANT' | translate }}</option>
+                        <option value="BOOKED">{{ 'bookingApp.RoomState.BOOKED' | translate }}</option>
+                        <option value="CLEANED">{{ 'bookingApp.RoomState.CLEANED' | translate }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bookingApp.room.cost" for="field_cost">Cost</label>
+                    <input type="number" class="form-control" name="cost" id="field_cost"
+                           formControlName="cost"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bookingApp.room.status" for="field_status">Status</label>
+                    <select class="form-control" name="status" formControlName="status" id="field_status">
+                        <option value="ACTIVE">{{ 'bookingApp.Status.ACTIVE' | translate }}</option>
+                        <option value="INACTIVE">{{ 'bookingApp.Status.INACTIVE' | translate }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bookingApp.room.createdDate" for="field_createdDate">Created Date</label>
+                    <div class="d-flex">
+                        <input id="field_createdDate" type="datetime-local" class="form-control" name="createdDate" formControlName="createdDate" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bookingApp.room.updatedDate" for="field_updatedDate">Updated Date</label>
+                    <div class="d-flex">
+                        <input id="field_updatedDate" type="datetime-local" class="form-control" name="updatedDate" formControlName="updatedDate" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bookingApp.room.createdBy" for="field_createdBy">Created By</label>
+                    <input type="number" class="form-control" name="createdBy" id="field_createdBy"
+                           formControlName="createdBy"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bookingApp.room.updatedBy" for="field_updatedBy">Updated By</label>
+                    <input type="number" class="form-control" name="updatedBy" id="field_updatedBy"
+                           formControlName="updatedBy"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bookingApp.room.booking" for="field_booking">Booking</label>
+                    <select class="form-control" id="field_booking" name="booking" formControlName="booking">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="bookingOption.id === editForm.get('booking')!.value?.id ? editForm.get('booking')!.value : bookingOption" *ngFor="let bookingOption of bookings; trackBy: trackById">{{ bookingOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bookingApp.room.user" for="field_user">User</label>
+                    <select class="form-control" id="field_user" name="user" formControlName="user">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="userOption.id === editForm.get('user')!.value?.id ? editForm.get('user')!.value : userOption" *ngFor="let userOption of users; trackBy: trackById">{{ userOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

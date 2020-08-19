@@ -1,0 +1,30 @@
+{
+  "bookingApp": {
+    "finance": {
+      "home": {
+        "title": "Finances",
+        "createLabel": "కొత్త Finance  సృష్టించండి",
+        "createOrEditLabel": "Finance సృష్టించండి లేదా సవరించండి",
+        "notFound": "No Finances found"
+      },
+      "created": "{{ param }} ఐడీ తో ఒక కొత్త Finance సృష్టించబడినది",
+      "updated": "{{ param }} ఐడీ తో ఒక కొత్త Finance సవరించబడినది",
+      "deleted": "{{ param }} ఐడీ తో ఒక కొత్త Finance తొలగించబడినది",
+      "delete": {
+        "question": "మీరు Finance {{ id }} ఖచ్చితంగా తొలగించాలనుకుంటున్నారా?"
+      },
+      "detail": {
+        "title": "Finance"
+      },
+      "credited": "Credited",
+      "debited": "Debited",
+      "purpose": "Purpose",
+      "createdDate": "Created Date",
+      "updatedDate": "Updated Date",
+      "createdBy": "Created By",
+      "updatedBy": "Updated By",
+      "booking": "Booking",
+      "user": "User"
+    }
+  }
+}

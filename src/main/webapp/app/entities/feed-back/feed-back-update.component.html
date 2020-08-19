@@ -1,0 +1,43 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-feed-back-heading" jhiTranslate="bookingApp.feedBack.home.createOrEditLabel">Create or edit a Feed Back</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bookingApp.feedBack.comments" for="field_comments">Comments</label>
+                    <input type="text" class="form-control" name="comments" id="field_comments"
+                           formControlName="comments"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bookingApp.feedBack.feedbackStatus" for="field_feedbackStatus">Feedback Status</label>
+                    <select class="form-control" name="feedbackStatus" formControlName="feedbackStatus" id="field_feedbackStatus">
+                        <option value="GOOD">{{ 'bookingApp.FeedbackStatus.GOOD' | translate }}</option>
+                        <option value="BAD">{{ 'bookingApp.FeedbackStatus.BAD' | translate }}</option>
+                        <option value="AVERAGE">{{ 'bookingApp.FeedbackStatus.AVERAGE' | translate }}</option>
+                        <option value="TOBEIMPROVED">{{ 'bookingApp.FeedbackStatus.TOBEIMPROVED' | translate }}</option>
+                        <option value="EXCELLENT">{{ 'bookingApp.FeedbackStatus.EXCELLENT' | translate }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,148 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-booking-heading" jhiTranslate="bookingApp.booking.home.createOrEditLabel">Create or edit a Booking</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bookingApp.booking.bookingType" for="field_bookingType">Booking Type</label>
+                    <select class="form-control" name="bookingType" formControlName="bookingType" id="field_bookingType">
+                        <option value="ONLINE">{{ 'bookingApp.BookingType.ONLINE' | translate }}</option>
+                        <option value="OFFLINE">{{ 'bookingApp.BookingType.OFFLINE' | translate }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bookingApp.booking.noofPeople" for="field_noofPeople">Noof People</label>
+                    <input type="number" class="form-control" name="noofPeople" id="field_noofPeople"
+                           formControlName="noofPeople"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bookingApp.booking.comingFrom" for="field_comingFrom">Coming From</label>
+                    <input type="text" class="form-control" name="comingFrom" id="field_comingFrom"
+                           formControlName="comingFrom"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bookingApp.booking.visitPurpose" for="field_visitPurpose">Visit Purpose</label>
+                    <input type="text" class="form-control" name="visitPurpose" id="field_visitPurpose"
+                           formControlName="visitPurpose"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bookingApp.booking.roomCategory" for="field_roomCategory">Room Category</label>
+                    <select class="form-control" name="roomCategory" formControlName="roomCategory" id="field_roomCategory">
+                        <option value="AC">{{ 'bookingApp.RoomType.AC' | translate }}</option>
+                        <option value="NONAC">{{ 'bookingApp.RoomType.NONAC' | translate }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bookingApp.booking.totalAmount" for="field_totalAmount">Total Amount</label>
+                    <input type="number" class="form-control" name="totalAmount" id="field_totalAmount"
+                           formControlName="totalAmount"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bookingApp.booking.advance" for="field_advance">Advance</label>
+                    <input type="number" class="form-control" name="advance" id="field_advance"
+                           formControlName="advance"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bookingApp.booking.balanceAmount" for="field_balanceAmount">Balance Amount</label>
+                    <input type="number" class="form-control" name="balanceAmount" id="field_balanceAmount"
+                           formControlName="balanceAmount"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bookingApp.booking.gst" for="field_gst">Gst</label>
+                    <input type="number" class="form-control" name="gst" id="field_gst"
+                           formControlName="gst"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bookingApp.booking.bookingFrom" for="field_bookingFrom">Booking From</label>
+                    <div class="d-flex">
+                        <input id="field_bookingFrom" type="datetime-local" class="form-control" name="bookingFrom" formControlName="bookingFrom" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bookingApp.booking.bookingTo" for="field_bookingTo">Booking To</label>
+                    <div class="d-flex">
+                        <input id="field_bookingTo" type="datetime-local" class="form-control" name="bookingTo" formControlName="bookingTo" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bookingApp.booking.createdDate" for="field_createdDate">Created Date</label>
+                    <div class="d-flex">
+                        <input id="field_createdDate" type="datetime-local" class="form-control" name="createdDate" formControlName="createdDate" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bookingApp.booking.updatedDate" for="field_updatedDate">Updated Date</label>
+                    <div class="d-flex">
+                        <input id="field_updatedDate" type="datetime-local" class="form-control" name="updatedDate" formControlName="updatedDate" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bookingApp.booking.createdBy" for="field_createdBy">Created By</label>
+                    <input type="number" class="form-control" name="createdBy" id="field_createdBy"
+                           formControlName="createdBy"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bookingApp.booking.updatedBy" for="field_updatedBy">Updated By</label>
+                    <input type="number" class="form-control" name="updatedBy" id="field_updatedBy"
+                           formControlName="updatedBy"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bookingApp.booking.user" for="field_user">User</label>
+                    <select class="form-control" id="field_user" name="user" formControlName="user">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="userOption.id === editForm.get('user')!.value?.id ? editForm.get('user')!.value : userOption" *ngFor="let userOption of users; trackBy: trackById">{{ userOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bookingApp.booking.customer" for="field_customer">Customer</label>
+                    <select class="form-control" id="field_customer" name="customer" formControlName="customer">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="customerInfoOption.id === editForm.get('customer')!.value?.id ? editForm.get('customer')!.value : customerInfoOption" *ngFor="let customerInfoOption of customerinfos; trackBy: trackById">{{ customerInfoOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bookingApp.booking.employee" for="field_employee">Employee</label>
+                    <select class="form-control" id="field_employee" name="employee" formControlName="employee">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="employeeInfoOption.id === editForm.get('employee')!.value?.id ? editForm.get('employee')!.value : employeeInfoOption" *ngFor="let employeeInfoOption of employeeinfos; trackBy: trackById">{{ employeeInfoOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

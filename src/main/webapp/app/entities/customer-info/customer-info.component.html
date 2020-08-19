@@ -1,0 +1,97 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="bookingApp.customerInfo.home.title">Customer Infos</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-customer-info" [routerLink]="['/customer-info/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="bookingApp.customerInfo.home.createLabel">
+            Create a new Customer Info
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="customerInfos?.length === 0">
+        <span jhiTranslate="bookingApp.customerInfo.home.notFound">No customerInfos found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="customerInfos && customerInfos.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="name"><span jhiTranslate="bookingApp.customerInfo.name">Name</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="photo"><span jhiTranslate="bookingApp.customerInfo.photo">Photo</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="age"><span jhiTranslate="bookingApp.customerInfo.age">Age</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="phno"><span jhiTranslate="bookingApp.customerInfo.phno">Phno</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="email"><span jhiTranslate="bookingApp.customerInfo.email">Email</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="gender"><span jhiTranslate="bookingApp.customerInfo.gender">Gender</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="status"><span jhiTranslate="bookingApp.customerInfo.status">Status</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="addressproof"><span jhiTranslate="bookingApp.customerInfo.addressproof">Addressproof</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="createdDate"><span jhiTranslate="bookingApp.customerInfo.createdDate">Created Date</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="updatedDate"><span jhiTranslate="bookingApp.customerInfo.updatedDate">Updated Date</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="createdBy"><span jhiTranslate="bookingApp.customerInfo.createdBy">Created By</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="updatedBy"><span jhiTranslate="bookingApp.customerInfo.updatedBy">Updated By</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="user.id"><span jhiTranslate="bookingApp.customerInfo.user">User</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let customerInfo of customerInfos ;trackBy: trackId">
+                    <td><a [routerLink]="['/customer-info', customerInfo.id, 'view']">{{ customerInfo.id }}</a></td>
+                    <td>{{ customerInfo.name }}</td>
+                    <td>{{ customerInfo.photo }}</td>
+                    <td>{{ customerInfo.age }}</td>
+                    <td>{{ customerInfo.phno }}</td>
+                    <td>{{ customerInfo.email }}</td>
+                    <td jhiTranslate="{{ 'bookingApp.GenderType.' + customerInfo.gender }}">{{ customerInfo.gender }}</td>
+                    <td jhiTranslate="{{ 'bookingApp.MStatus.' + customerInfo.status }}">{{ customerInfo.status }}</td>
+                    <td>{{ customerInfo.addressproof }}</td>
+                    <td>{{ customerInfo.createdDate | date:'medium' }}</td>
+                    <td>{{ customerInfo.updatedDate | date:'medium' }}</td>
+                    <td>{{ customerInfo.createdBy }}</td>
+                    <td>{{ customerInfo.updatedBy }}</td>
+                    <td>
+                        {{ customerInfo.user?.id }}
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/customer-info', customerInfo.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/customer-info', customerInfo.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(customerInfo)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="customerInfos && customerInfos.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,80 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="fileMeta">
+            <h2><span jhiTranslate="bookingApp.fileMeta.detail.title">File Meta</span> {{ fileMeta.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="bookingApp.fileMeta.name">Name</span></dt>
+                <dd>
+                    <span>{{ fileMeta.name }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.fileMeta.type">Type</span></dt>
+                <dd>
+                    <span>{{ fileMeta.type }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.fileMeta.size">Size</span></dt>
+                <dd>
+                    <span>{{ fileMeta.size }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.fileMeta.path">Path</span></dt>
+                <dd>
+                    <span>{{ fileMeta.path }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.fileMeta.createdDate">Created Date</span></dt>
+                <dd>
+                    <span>{{ fileMeta.createdDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.fileMeta.updatedDate">Updated Date</span></dt>
+                <dd>
+                    <span>{{ fileMeta.updatedDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.fileMeta.createdBy">Created By</span></dt>
+                <dd>
+                    <span>{{ fileMeta.createdBy }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.fileMeta.updatedBy">Updated By</span></dt>
+                <dd>
+                    <span>{{ fileMeta.updatedBy }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.fileMeta.booking">Booking</span></dt>
+                <dd>
+                    <div *ngIf="fileMeta.booking">
+                        <a [routerLink]="['/booking', fileMeta.booking?.id, 'view']">{{ fileMeta.booking?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.fileMeta.customer">Customer</span></dt>
+                <dd>
+                    <div *ngIf="fileMeta.customer">
+                        <a [routerLink]="['/customer-info', fileMeta.customer?.id, 'view']">{{ fileMeta.customer?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.fileMeta.employee">Employee</span></dt>
+                <dd>
+                    <div *ngIf="fileMeta.employee">
+                        <a [routerLink]="['/employee-info', fileMeta.employee?.id, 'view']">{{ fileMeta.employee?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.fileMeta.user">User</span></dt>
+                <dd>
+                    {{ fileMeta.user?.id }}
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/file-meta', fileMeta.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

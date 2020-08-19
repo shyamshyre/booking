@@ -7,6 +7,15 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "ఎంటిటీలు",
+        "customerInfo": "Customer Info",
+        "employeeInfo": "Employee Info",
+        "room": "Room",
+        "booking": "Booking",
+        "address": "Address",
+        "finance": "Finance",
+        "inventory": "Inventory",
+        "feedBack": "Feed Back",
+        "fileMeta": "File Meta",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

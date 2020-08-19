@@ -1,0 +1,9 @@
+{
+  "bookingApp": {
+    "Status": {
+      "null": "",
+      "ACTIVE": "ACTIVE",
+      "INACTIVE": "INACTIVE"
+    }
+  }
+}

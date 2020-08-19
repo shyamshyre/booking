@@ -1,0 +1,72 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="room">
+            <h2><span jhiTranslate="bookingApp.room.detail.title">Room</span> {{ room.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="bookingApp.room.rooomno">Rooomno</span></dt>
+                <dd>
+                    <span>{{ room.rooomno }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.room.roomType">Room Type</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'bookingApp.RoomType.' + room.roomType }}">{{ room.roomType }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.room.rstatus">Rstatus</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'bookingApp.RoomState.' + room.rstatus }}">{{ room.rstatus }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.room.cost">Cost</span></dt>
+                <dd>
+                    <span>{{ room.cost }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.room.status">Status</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'bookingApp.Status.' + room.status }}">{{ room.status }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.room.createdDate">Created Date</span></dt>
+                <dd>
+                    <span>{{ room.createdDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.room.updatedDate">Updated Date</span></dt>
+                <dd>
+                    <span>{{ room.updatedDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.room.createdBy">Created By</span></dt>
+                <dd>
+                    <span>{{ room.createdBy }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.room.updatedBy">Updated By</span></dt>
+                <dd>
+                    <span>{{ room.updatedBy }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.room.booking">Booking</span></dt>
+                <dd>
+                    <div *ngIf="room.booking">
+                        <a [routerLink]="['/booking', room.booking?.id, 'view']">{{ room.booking?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.room.user">User</span></dt>
+                <dd>
+                    {{ room.user?.id }}
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/room', room.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

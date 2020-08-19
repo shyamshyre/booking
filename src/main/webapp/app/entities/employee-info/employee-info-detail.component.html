@@ -1,0 +1,82 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="employeeInfo">
+            <h2><span jhiTranslate="bookingApp.employeeInfo.detail.title">Employee Info</span> {{ employeeInfo.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="bookingApp.employeeInfo.name">Name</span></dt>
+                <dd>
+                    <span>{{ employeeInfo.name }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.employeeInfo.age">Age</span></dt>
+                <dd>
+                    <span>{{ employeeInfo.age }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.employeeInfo.gender">Gender</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'bookingApp.GenderType.' + employeeInfo.gender }}">{{ employeeInfo.gender }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.employeeInfo.addressproof">Addressproof</span></dt>
+                <dd>
+                    <span>{{ employeeInfo.addressproof }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.employeeInfo.photo">Photo</span></dt>
+                <dd>
+                    <span>{{ employeeInfo.photo }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.employeeInfo.doj">Doj</span></dt>
+                <dd>
+                    <span>{{ employeeInfo.doj }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.employeeInfo.education">Education</span></dt>
+                <dd>
+                    <span>{{ employeeInfo.education }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.employeeInfo.referredby">Referredby</span></dt>
+                <dd>
+                    <span>{{ employeeInfo.referredby }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.employeeInfo.status">Status</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'bookingApp.Status.' + employeeInfo.status }}">{{ employeeInfo.status }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.employeeInfo.createdDate">Created Date</span></dt>
+                <dd>
+                    <span>{{ employeeInfo.createdDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.employeeInfo.updatedDate">Updated Date</span></dt>
+                <dd>
+                    <span>{{ employeeInfo.updatedDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.employeeInfo.createdBy">Created By</span></dt>
+                <dd>
+                    <span>{{ employeeInfo.createdBy }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.employeeInfo.updatedBy">Updated By</span></dt>
+                <dd>
+                    <span>{{ employeeInfo.updatedBy }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.employeeInfo.user">User</span></dt>
+                <dd>
+                    {{ employeeInfo.user?.id }}
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/employee-info', employeeInfo.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

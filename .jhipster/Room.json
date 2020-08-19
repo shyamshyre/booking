@@ -1,0 +1,71 @@
+{
+  "name": "Room",
+  "fields": [
+    {
+      "fieldName": "rooomno",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "roomType",
+      "fieldType": "RoomType",
+      "fieldValues": "AC,NONAC"
+    },
+    {
+      "fieldName": "rstatus",
+      "fieldType": "RoomState",
+      "fieldValues": "OCCUPIED,CLEANING,VACANT,BOOKED,CLEANED"
+    },
+    {
+      "fieldName": "cost",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "Status",
+      "fieldValues": "ACTIVE,INACTIVE"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "updatedDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "updatedBy",
+      "fieldType": "Long"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "booking",
+      "otherEntityRelationshipName": "room",
+      "relationshipName": "booking",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "room",
+      "relationshipName": "user",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200819010651",
+  "entityTableName": "room",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

@@ -1,0 +1,9 @@
+{
+  "bookingApp": {
+    "BookingType": {
+      "null": "",
+      "ONLINE": "ONLINE",
+      "OFFLINE": "OFFLINE"
+    }
+  }
+}

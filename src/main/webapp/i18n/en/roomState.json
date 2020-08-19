@@ -1,0 +1,12 @@
+{
+  "bookingApp": {
+    "RoomState": {
+      "null": "",
+      "OCCUPIED": "OCCUPIED",
+      "CLEANING": "CLEANING",
+      "VACANT": "VACANT",
+      "BOOKED": "BOOKED",
+      "CLEANED": "CLEANED"
+    }
+  }
+}

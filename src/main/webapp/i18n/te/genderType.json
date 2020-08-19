@@ -1,0 +1,9 @@
+{
+  "bookingApp": {
+    "GenderType": {
+      "null": "",
+      "MALE": "MALE",
+      "FEMALE": "FEMALE"
+    }
+  }
+}

@@ -1,0 +1,103 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="bookingApp.address.home.title">Addresses</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-address" [routerLink]="['/address/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="bookingApp.address.home.createLabel">
+            Create a new Address
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="addresses?.length === 0">
+        <span jhiTranslate="bookingApp.address.home.notFound">No addresses found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="addresses && addresses.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="name"><span jhiTranslate="bookingApp.address.name">Name</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="dno"><span jhiTranslate="bookingApp.address.dno">Dno</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="locality"><span jhiTranslate="bookingApp.address.locality">Locality</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="streetName"><span jhiTranslate="bookingApp.address.streetName">Street Name</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="district"><span jhiTranslate="bookingApp.address.district">District</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="city"><span jhiTranslate="bookingApp.address.city">City</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="pincode"><span jhiTranslate="bookingApp.address.pincode">Pincode</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="createdDate"><span jhiTranslate="bookingApp.address.createdDate">Created Date</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="updatedDate"><span jhiTranslate="bookingApp.address.updatedDate">Updated Date</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="createdBy"><span jhiTranslate="bookingApp.address.createdBy">Created By</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="updatedBy"><span jhiTranslate="bookingApp.address.updatedBy">Updated By</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="customer.id"><span jhiTranslate="bookingApp.address.customer">Customer</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="employee.id"><span jhiTranslate="bookingApp.address.employee">Employee</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let address of addresses ;trackBy: trackId">
+                    <td><a [routerLink]="['/address', address.id, 'view']">{{ address.id }}</a></td>
+                    <td>{{ address.name }}</td>
+                    <td>{{ address.dno }}</td>
+                    <td>{{ address.locality }}</td>
+                    <td>{{ address.streetName }}</td>
+                    <td>{{ address.district }}</td>
+                    <td>{{ address.city }}</td>
+                    <td>{{ address.pincode }}</td>
+                    <td>{{ address.createdDate | date:'medium' }}</td>
+                    <td>{{ address.updatedDate | date:'medium' }}</td>
+                    <td>{{ address.createdBy }}</td>
+                    <td>{{ address.updatedBy }}</td>
+                    <td>
+                        <div *ngIf="address.customer">
+                            <a [routerLink]="['/customer-info', address.customer?.id, 'view']" >{{ address.customer?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="address.employee">
+                            <a [routerLink]="['/employee-info', address.employee?.id, 'view']" >{{ address.employee?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/address', address.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/address', address.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(address)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="addresses && addresses.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

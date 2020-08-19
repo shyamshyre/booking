@@ -1,0 +1,102 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="booking">
+            <h2><span jhiTranslate="bookingApp.booking.detail.title">Booking</span> {{ booking.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="bookingApp.booking.bookingType">Booking Type</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'bookingApp.BookingType.' + booking.bookingType }}">{{ booking.bookingType }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.booking.noofPeople">Noof People</span></dt>
+                <dd>
+                    <span>{{ booking.noofPeople }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.booking.comingFrom">Coming From</span></dt>
+                <dd>
+                    <span>{{ booking.comingFrom }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.booking.visitPurpose">Visit Purpose</span></dt>
+                <dd>
+                    <span>{{ booking.visitPurpose }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.booking.roomCategory">Room Category</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'bookingApp.RoomType.' + booking.roomCategory }}">{{ booking.roomCategory }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.booking.totalAmount">Total Amount</span></dt>
+                <dd>
+                    <span>{{ booking.totalAmount }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.booking.advance">Advance</span></dt>
+                <dd>
+                    <span>{{ booking.advance }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.booking.balanceAmount">Balance Amount</span></dt>
+                <dd>
+                    <span>{{ booking.balanceAmount }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.booking.gst">Gst</span></dt>
+                <dd>
+                    <span>{{ booking.gst }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.booking.bookingFrom">Booking From</span></dt>
+                <dd>
+                    <span>{{ booking.bookingFrom }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.booking.bookingTo">Booking To</span></dt>
+                <dd>
+                    <span>{{ booking.bookingTo }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.booking.createdDate">Created Date</span></dt>
+                <dd>
+                    <span>{{ booking.createdDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.booking.updatedDate">Updated Date</span></dt>
+                <dd>
+                    <span>{{ booking.updatedDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.booking.createdBy">Created By</span></dt>
+                <dd>
+                    <span>{{ booking.createdBy }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.booking.updatedBy">Updated By</span></dt>
+                <dd>
+                    <span>{{ booking.updatedBy }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.booking.user">User</span></dt>
+                <dd>
+                    {{ booking.user?.id }}
+                </dd>
+                <dt><span jhiTranslate="bookingApp.booking.customer">Customer</span></dt>
+                <dd>
+                    <div *ngIf="booking.customer">
+                        <a [routerLink]="['/customer-info', booking.customer?.id, 'view']">{{ booking.customer?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.booking.employee">Employee</span></dt>
+                <dd>
+                    <div *ngIf="booking.employee">
+                        <a [routerLink]="['/employee-info', booking.employee?.id, 'view']">{{ booking.employee?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/booking', booking.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

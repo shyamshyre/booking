@@ -1,0 +1,30 @@
+{
+  "bookingApp": {
+    "finance": {
+      "home": {
+        "title": "Finances",
+        "createLabel": "Create a new Finance",
+        "createOrEditLabel": "Create or edit a Finance",
+        "notFound": "No Finances found"
+      },
+      "created": "A new Finance is created with identifier {{ param }}",
+      "updated": "A Finance is updated with identifier {{ param }}",
+      "deleted": "A Finance is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Finance {{ id }}?"
+      },
+      "detail": {
+        "title": "Finance"
+      },
+      "credited": "Credited",
+      "debited": "Debited",
+      "purpose": "Purpose",
+      "createdDate": "Created Date",
+      "updatedDate": "Updated Date",
+      "createdBy": "Created By",
+      "updatedBy": "Updated By",
+      "booking": "Booking",
+      "user": "User"
+    }
+  }
+}

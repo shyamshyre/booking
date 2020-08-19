@@ -1,0 +1,97 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="bookingApp.room.home.title">Rooms</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-room" [routerLink]="['/room/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="bookingApp.room.home.createLabel">
+            Create a new Room
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="rooms?.length === 0">
+        <span jhiTranslate="bookingApp.room.home.notFound">No rooms found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="rooms && rooms.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="rooomno"><span jhiTranslate="bookingApp.room.rooomno">Rooomno</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="roomType"><span jhiTranslate="bookingApp.room.roomType">Room Type</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="rstatus"><span jhiTranslate="bookingApp.room.rstatus">Rstatus</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="cost"><span jhiTranslate="bookingApp.room.cost">Cost</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="status"><span jhiTranslate="bookingApp.room.status">Status</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="createdDate"><span jhiTranslate="bookingApp.room.createdDate">Created Date</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="updatedDate"><span jhiTranslate="bookingApp.room.updatedDate">Updated Date</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="createdBy"><span jhiTranslate="bookingApp.room.createdBy">Created By</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="updatedBy"><span jhiTranslate="bookingApp.room.updatedBy">Updated By</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="booking.id"><span jhiTranslate="bookingApp.room.booking">Booking</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="user.id"><span jhiTranslate="bookingApp.room.user">User</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let room of rooms ;trackBy: trackId">
+                    <td><a [routerLink]="['/room', room.id, 'view']">{{ room.id }}</a></td>
+                    <td>{{ room.rooomno }}</td>
+                    <td jhiTranslate="{{ 'bookingApp.RoomType.' + room.roomType }}">{{ room.roomType }}</td>
+                    <td jhiTranslate="{{ 'bookingApp.RoomState.' + room.rstatus }}">{{ room.rstatus }}</td>
+                    <td>{{ room.cost }}</td>
+                    <td jhiTranslate="{{ 'bookingApp.Status.' + room.status }}">{{ room.status }}</td>
+                    <td>{{ room.createdDate | date:'medium' }}</td>
+                    <td>{{ room.updatedDate | date:'medium' }}</td>
+                    <td>{{ room.createdBy }}</td>
+                    <td>{{ room.updatedBy }}</td>
+                    <td>
+                        <div *ngIf="room.booking">
+                            <a [routerLink]="['/booking', room.booking?.id, 'view']" >{{ room.booking?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        {{ room.user?.id }}
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/room', room.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/room', room.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(room)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="rooms && rooms.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

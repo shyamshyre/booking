@@ -1,0 +1,26 @@
+{
+  "name": "FeedBack",
+  "fields": [
+    {
+      "fieldName": "comments",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "feedbackStatus",
+      "fieldType": "FeedbackStatus",
+      "fieldValues": "GOOD,BAD,AVERAGE,TOBEIMPROVED,EXCELLENT"
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20200819011151",
+  "entityTableName": "feed_back",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

@@ -1,0 +1,74 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="inventory">
+            <h2><span jhiTranslate="bookingApp.inventory.detail.title">Inventory</span> {{ inventory.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="bookingApp.inventory.purchaseDate">Purchase Date</span></dt>
+                <dd>
+                    <span>{{ inventory.purchaseDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.inventory.itemdescription">Itemdescription</span></dt>
+                <dd>
+                    <span>{{ inventory.itemdescription }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.inventory.quantity">Quantity</span></dt>
+                <dd>
+                    <span>{{ inventory.quantity }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.inventory.available">Available</span></dt>
+                <dd>
+                    <span>{{ inventory.available }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.inventory.itemcat">Itemcat</span></dt>
+                <dd>
+                    <span>{{ inventory.itemcat }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.inventory.purchaseAmount">Purchase Amount</span></dt>
+                <dd>
+                    <span>{{ inventory.purchaseAmount }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.inventory.purpose">Purpose</span></dt>
+                <dd>
+                    <span>{{ inventory.purpose }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.inventory.createdDate">Created Date</span></dt>
+                <dd>
+                    <span>{{ inventory.createdDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.inventory.updatedDate">Updated Date</span></dt>
+                <dd>
+                    <span>{{ inventory.updatedDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.inventory.createdBy">Created By</span></dt>
+                <dd>
+                    <span>{{ inventory.createdBy }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.inventory.updatedBy">Updated By</span></dt>
+                <dd>
+                    <span>{{ inventory.updatedBy }}</span>
+                </dd>
+                <dt><span jhiTranslate="bookingApp.inventory.user">User</span></dt>
+                <dd>
+                    {{ inventory.user?.id }}
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/inventory', inventory.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

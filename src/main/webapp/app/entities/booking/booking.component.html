@@ -1,0 +1,115 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="bookingApp.booking.home.title">Bookings</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-booking" [routerLink]="['/booking/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="bookingApp.booking.home.createLabel">
+            Create a new Booking
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="bookings?.length === 0">
+        <span jhiTranslate="bookingApp.booking.home.notFound">No bookings found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="bookings && bookings.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="bookingType"><span jhiTranslate="bookingApp.booking.bookingType">Booking Type</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="noofPeople"><span jhiTranslate="bookingApp.booking.noofPeople">Noof People</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="comingFrom"><span jhiTranslate="bookingApp.booking.comingFrom">Coming From</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="visitPurpose"><span jhiTranslate="bookingApp.booking.visitPurpose">Visit Purpose</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="roomCategory"><span jhiTranslate="bookingApp.booking.roomCategory">Room Category</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="totalAmount"><span jhiTranslate="bookingApp.booking.totalAmount">Total Amount</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="advance"><span jhiTranslate="bookingApp.booking.advance">Advance</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="balanceAmount"><span jhiTranslate="bookingApp.booking.balanceAmount">Balance Amount</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="gst"><span jhiTranslate="bookingApp.booking.gst">Gst</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="bookingFrom"><span jhiTranslate="bookingApp.booking.bookingFrom">Booking From</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="bookingTo"><span jhiTranslate="bookingApp.booking.bookingTo">Booking To</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="createdDate"><span jhiTranslate="bookingApp.booking.createdDate">Created Date</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="updatedDate"><span jhiTranslate="bookingApp.booking.updatedDate">Updated Date</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="createdBy"><span jhiTranslate="bookingApp.booking.createdBy">Created By</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="updatedBy"><span jhiTranslate="bookingApp.booking.updatedBy">Updated By</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="user.id"><span jhiTranslate="bookingApp.booking.user">User</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="customer.id"><span jhiTranslate="bookingApp.booking.customer">Customer</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="employee.id"><span jhiTranslate="bookingApp.booking.employee">Employee</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let booking of bookings ;trackBy: trackId">
+                    <td><a [routerLink]="['/booking', booking.id, 'view']">{{ booking.id }}</a></td>
+                    <td jhiTranslate="{{ 'bookingApp.BookingType.' + booking.bookingType }}">{{ booking.bookingType }}</td>
+                    <td>{{ booking.noofPeople }}</td>
+                    <td>{{ booking.comingFrom }}</td>
+                    <td>{{ booking.visitPurpose }}</td>
+                    <td jhiTranslate="{{ 'bookingApp.RoomType.' + booking.roomCategory }}">{{ booking.roomCategory }}</td>
+                    <td>{{ booking.totalAmount }}</td>
+                    <td>{{ booking.advance }}</td>
+                    <td>{{ booking.balanceAmount }}</td>
+                    <td>{{ booking.gst }}</td>
+                    <td>{{ booking.bookingFrom | date:'medium' }}</td>
+                    <td>{{ booking.bookingTo | date:'medium' }}</td>
+                    <td>{{ booking.createdDate | date:'medium' }}</td>
+                    <td>{{ booking.updatedDate | date:'medium' }}</td>
+                    <td>{{ booking.createdBy }}</td>
+                    <td>{{ booking.updatedBy }}</td>
+                    <td>
+                        {{ booking.user?.id }}
+                    </td>
+                    <td>
+                        <div *ngIf="booking.customer">
+                            <a [routerLink]="['/customer-info', booking.customer?.id, 'view']" >{{ booking.customer?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="booking.employee">
+                            <a [routerLink]="['/employee-info', booking.employee?.id, 'view']" >{{ booking.employee?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/booking', booking.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/booking', booking.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(booking)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="bookings && bookings.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

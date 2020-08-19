@@ -1,0 +1,56 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.shyam.booking",
+      "nativeLanguage": "en"
+    },
+    "jhipsterVersion": "6.10.1",
+    "applicationType": "monolith",
+    "baseName": "booking",
+    "packageName": "com.shyam.booking",
+    "packageFolder": "com/shyam/booking",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "mysql",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "N2FiYWU2YTllM2YwY2I3NjMyZjFiOGRkYjNhMGU3ZDgwYWZlODVhMGZhYjAyZTVjNGQ1YzVlM2NlMTlhYzA3Y2YzNTllZDM0NmQxOGFiZmFjNzc4MTNmZmM1NTM4N2E0ZjQ4MWJmMjQ0YTI4Y2JlMTZmODMyMjVjM2FhNzhmNWE=",
+    "embeddableLaunchScript": false,
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "cosmo",
+    "clientThemeVariant": "primary",
+    "creationTimestamp": 1597798834411,
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [
+      {
+        "name": "generator-jhipster-electron",
+        "version": "1.1.0"
+      },
+      {
+        "name": "generator-jhipster-ngx-charts",
+        "version": "1.0.3"
+      },
+      {
+        "name": "generator-jhipster-fullcalendar",
+        "version": "0.0.4"
+      }
+    ],
+    "enableTranslation": true,
+    "nativeLanguage": "en",
+    "languages": ["en", "te"],
+    "blueprints": []
+  }
+}
